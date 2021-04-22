@@ -5,16 +5,11 @@
   body {
     margin: 0;
     padding: 0;
-    /* background-color: #f1f5f8; */
-    font-family: "Zilla Slab", serif;
+    background-color: #f6f7f8;
+    font-family: 'Ubuntu', sans-serif;
   }
   
-  /* h2 {
-    font-family: "Great Vibes", cursive;
-    font-size: 3rem;
-    text-align: center;
-    color: #ff6a23;
-  } */
+
   .menu {
     margin-top: 20px;
   }

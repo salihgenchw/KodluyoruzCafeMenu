@@ -82,10 +82,21 @@ const menu = [
   },
 ];
 
-// const butonlar = document.querySelector('.btn-container');
+const butonlar = document.querySelector('.btn-container');
 
 var firstcategory = menu.map((category) => category.category);
 let CategoryName = [...new Set(firstcategory)];
+
+
+CategoryName.map(category => {
+  butonlar.innerHTML +=  `<button type="button" class="btn btn-outline-success btn-lg me-2">${category}</button>`
+})
+
+
+
+
+
+
 
 
 
