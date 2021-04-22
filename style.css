@@ -5,16 +5,16 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: #f1f5f8;
+    /* background-color: #f1f5f8; */
     font-family: "Zilla Slab", serif;
   }
   
-  h2 {
+  /* h2 {
     font-family: "Great Vibes", cursive;
     font-size: 3rem;
     text-align: center;
     color: #ff6a23;
-  }
+  } */
   .menu {
     margin-top: 20px;
   }
@@ -56,4 +56,9 @@
   
   .menu-text {
     padding-top: 20px;
+  }
+
+  .greenbar{
+    background-color: #007146;
+    height: 10px;
   }
