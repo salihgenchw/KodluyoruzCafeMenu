@@ -83,6 +83,8 @@ const menu = [
 ];
 
 const butonlar = document.querySelector('.btn-container');
+const section = document.querySelector('.section-center');
+
 
 var firstcategory = menu.map((category) => category.category);
 let CategoryName = [...new Set(firstcategory)];
@@ -91,6 +93,23 @@ let CategoryName = [...new Set(firstcategory)];
 CategoryName.map(category => {
   butonlar.innerHTML +=  `<button type="button" class="btn btn-outline-success btn-lg me-2">${category}</button>`
 });
+
+menu.map(product => {
+  section.innerHTML +=  `<div class="col-md-2 mt-3">
+  <img src="${product.img}" alt="" style="height: 220px;">
+  </div>
+  <div class="col-md-4 mt-3 px-4">
+  <h2>${product.title}</h2>
+  <hr>
+  <p class="text-secondary">${product.desc}</p>
+  </div>`
+});
+
+
+
+
+
+
 
 
 
