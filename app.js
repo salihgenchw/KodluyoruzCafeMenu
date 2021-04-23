@@ -1,5 +1,4 @@
 //menü arrayi
-
 const menu = [
   {
     id: 1,
@@ -69,8 +68,7 @@ const menu = [
     title: "Flat White",
     category: "Americanos",
     price: 12.99,
-    img:
-      "https://www.starbucks.co.th/stb-media/2020/08/14.Flat-white1080.png",
+    img: "https://www.starbucks.co.th/stb-media/2020/08/14.Flat-white1080.png",
     desc: `Smooth ristretto shots of espresso get the perfect amount of steamed whole milk to create a not-too-strong, not-too-creamy, just-right flavor.`,
   },
   {
@@ -94,48 +92,54 @@ const menu = [
 ];
 
 //selectorlar
-
-const butonlar = document.querySelector('.btn-container');
-const section = document.querySelector('.section-center');
+const butonlar = document.querySelector(".btn-container");
+const section = document.querySelector(".section-center");
 
 //duplicate olan kategorileri çıkarıp yeni array oluşturma
 var firstcategory = menu.map((category) => category.category);
 let CategoryName = [...new Set(firstcategory)];
 
 // kategorileri butonlarla listeleme
-CategoryName.map(category => {
-  butonlar.innerHTML +=  `<button type="button" class="btn btn-outline-success btn-lg me-2">${category}</button>`
+CategoryName.map((category) => {
+  butonlar.innerHTML += `<button type="button" class="btn btn-outline-success btn-lg me-2" data-filter="${category}">${category}</button>`;
 });
 
-//Tüm ürünleri ekleme
-menu.map(product => {
-  section.innerHTML +=  
-  `<div class="col-xl-2 col-lg-2 col-md-4 col-sm-5 mt-3">
-  <img class="img-fluid" src="${product.img}" alt="" style="height: 13rem; object-fit: cover;">
-  </div>
-  <div class="col-xl-4 col-lg-4 col-md-8 col-sm-7 mt-3 px-4">
-  <h2>${product.title}</h2>
-  <hr>
-  <p class="text-secondary">${product.desc}</p>
-  </div>`
+//sayfa yüklendiğinde ürünlerin hepsi gelsin diye yazdığım kod.
+menu.map((item) => {
+  section.innerHTML += `
+      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-5 mt-3">
+      <img class="img-fluid" src="${item.img}" alt="" style="height: 13rem; object-fit: cover;">
+      </div>
+      <div class="col-xl-4 col-lg-4 col-md-8 col-sm-7 mt-3 px-4">
+      <h2>${item.title}</h2>
+      <hr>
+      <p class="text-secondary">${item.desc}</p>
+      </div>
+      `;
 });
 
+const buttons = document.querySelectorAll(".btn-outline-success");
 
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener("click", (e) => {
+    section.innerHTML = "";
+    e.preventDefault();
+    const filter = e.target.dataset.filter;
+    const arr = menu.filter((product) =>
+      filter === "ALL" ? product : product.category === filter
+    );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    arr.map((item) => {
+      section.innerHTML += `
+          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-5 mt-3">
+          <img class="img-fluid" src="${item.img}" alt="" style="height: 13rem; object-fit: cover;">
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-8 col-sm-7 mt-3 px-4">
+          <h2>${item.title}</h2>
+          <hr>
+          <p class="text-secondary">${item.desc}</p>
+          </div>
+          `;
+    });
+  });
+}
