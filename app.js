@@ -1,3 +1,5 @@
+//menü arrayi
+
 const menu = [
   {
     id: 1,
@@ -65,7 +67,7 @@ const menu = [
   {
     id: 8,
     title: "Flat White",
-    category: "Flat Whites",
+    category: "Americanos",
     price: 12.99,
     img:
       "https://www.starbucks.co.th/stb-media/2020/08/14.Flat-white1080.png",
@@ -74,31 +76,44 @@ const menu = [
   {
     id: 9,
     title: "Honey Almondmilk Flat White",
-    category: "Flat Whites",
+    category: "Cappuccinos",
     price: 3.99,
     img:
       "https://globalassets.starbucks.com/assets/77801559b72b469583f4d484adc1bfa7.jpg?impolicy=1by1_wide_1242",
     desc: `This flat white intentionally pairs almondmilk and Starbucks® Blonde Espresso Roast with a hint of honey, making a perfect amount of creamy, nutty sweetness.`,
   },
+  {
+    id: 10,
+    title: "Pistachio Latte",
+    category: "Lattes",
+    price: 12.99,
+    img:
+      "https://globalassets.starbucks.com/assets/21fd405326b742b190667e5301e94f68.jpg?impolicy=1by1_wide_1242",
+    desc: `Cozy flavors of sweet pistachio and rich brown butter paired with espresso and steamed milk, specially crafted to keep you comforted and energized in the new year. `,
+  },
 ];
+
+//selectorlar
 
 const butonlar = document.querySelector('.btn-container');
 const section = document.querySelector('.section-center');
 
-
+//duplicate olan kategorileri çıkarıp yeni array oluşturma
 var firstcategory = menu.map((category) => category.category);
 let CategoryName = [...new Set(firstcategory)];
 
-
+// kategorileri butonlarla listeleme
 CategoryName.map(category => {
   butonlar.innerHTML +=  `<button type="button" class="btn btn-outline-success btn-lg me-2">${category}</button>`
 });
 
+//Tüm ürünleri ekleme
 menu.map(product => {
-  section.innerHTML +=  `<div class="col-md-2 mt-3">
-  <img src="${product.img}" alt="" style="height: 220px;">
+  section.innerHTML +=  
+  `<div class="col-xl-2 col-lg-2 col-md-4 col-sm-5 mt-3">
+  <img class="img-fluid" src="${product.img}" alt="" style="height: 13rem; object-fit: cover;">
   </div>
-  <div class="col-md-4 mt-3 px-4">
+  <div class="col-xl-4 col-lg-4 col-md-8 col-sm-7 mt-3 px-4">
   <h2>${product.title}</h2>
   <hr>
   <p class="text-secondary">${product.desc}</p>
